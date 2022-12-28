@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Patients List</title>
+<link rel="stylesheet" href="../../css/bootstrap.min.css" >
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-6">
+			<a href="/patients/list">Patients</a>&nbsp;|&nbsp;
+		</div>
+	</div>
+	<div class="row"><h2>Patients</h2></div>
+	<div class="row">
+		<a href="/patients/add" class="btn btn-primary btn-sm">Add New</a>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Fullname</th>
+					<th>Birthdate</th>
+					<th>Gender</th>
+					<th>Address</th>
+					<th>Phone Number</th>
+					<th>Note(s)</th>
+					<th>Assessment(s)</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<tr th:each="patient : ${patient}">
+					<td style="width: 10%" th:text="${patient.id}"></td>
+					<td th:text="${patient.name}"></td>
+					<td th:text="${patient.fullname}"></td>
+					<td style="width: 25%" th:text="${patient.birthdate}"></td>
+					<td th:text="${patient.gender}"></td>
+					<td th:text="${patient.address}"></td>
+					<td th:text="${patient.phoneNumber}"></td>
+					<td style="width: 15%" class="text-center">
+						<a th:href="@{/notes/list?patientsName={patientsName}(patientsName=${patient.name})}">Notes</a>
+					</td>
+					<td style="width: 15%" class="text-center">
+						<a th:href="@{/assessment?familyName={familyName}(familyName=${patient.name})}">Assessments</a>
+					</td>
+					<td style="width: 15%" class="text-center">
+						<a th:href="@{/patients/update/{id}(id=${patient.id})}">Edit</a>&nbsp;|&nbsp;
+						<a th:href="@{/patients/delete/{id}(id=${patient.id})}">Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+</body>
+</html>
