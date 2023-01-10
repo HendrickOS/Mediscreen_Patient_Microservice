@@ -1,29 +1,30 @@
 package com.project9.Mediscreen_Patient_Microservice.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.project9.Mediscreen_Patient_Microservice.domain.Patient;
 import com.project9.Mediscreen_Patient_Microservice.services.PatientService;
 
-@Controller
+@RestController
 public class PatientController {
 
 	@Autowired
 	PatientService patientService;
 
-	@RequestMapping("/patients/list")
-	public String patientsList(Model model) {
-		model.addAttribute("patient", patientService.findAll());
-		return "patient/list";
+	@RequestMapping("/patients")
+	public List<Patient> patientsList(Model model) {
+		return patientService.findAll();
 	}
 
 	@GetMapping("/patients/add")
