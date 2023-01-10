@@ -21,7 +21,7 @@ public class PatientController {
 	PatientService patientService;
 
 	@RequestMapping("/patients/list")
-	public String home(Model model) {
+	public String patientsList(Model model) {
 		model.addAttribute("patient", patientService.findAll());
 		return "patient/list";
 	}
