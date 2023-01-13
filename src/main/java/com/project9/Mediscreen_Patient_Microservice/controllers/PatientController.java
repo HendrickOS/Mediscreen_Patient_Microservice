@@ -23,22 +23,23 @@ public class PatientController {
 	PatientService patientService;
 
 	@RequestMapping("/patients")
-	public List<Patient> patientsList(Model model) {
+	public List<Patient> patientsList() {
 		return patientService.findAll();
 	}
 
-	@GetMapping("/patients/add")
-	public String addPatient(Patient patient) {
-		return "patient/add";
-	}
+//	@GetMapping("/patients/add")
+//	public String addPatient(Patient patient) {
+//		return "patient/add";
+//	}
 
 	@PostMapping("/patients/validate")
-	public String validate(@Valid Patient patient, BindingResult result, Model model) {
+	public Patient validate(@Valid Patient patient, BindingResult result) {
 		if (!result.hasErrors()) {
-			patientService.save(patient);
-			return "redirect:/patients/list";
+			return patientService.save(patient);
+//			return "redirect:/patients/list";
 		}
-		return "patient/add";
+//		return "patient/add";
+		return patient;
 	}
 
 	@GetMapping("/patients/update/{id}")
