@@ -43,32 +43,36 @@ public class PatientController {
 	}
 
 	@GetMapping("/patients/update/{id}")
-	public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-		Patient patient = patientService.findById(id);
-		model.addAttribute("patient", patient);
-		return "patient/update";
+	public Patient showUpdateForm(@PathVariable("id") Integer id, Model model) {
+		return patientService.findById(id);
+//		Patient patient = patientService.findById(id);
+//		model.addAttribute("patient", patient);
+//		return "patient/update";
 	}
 
 	@PostMapping("/patients/update/{id}")
-	public String updatePatient(@PathVariable("id") Integer id, @Valid Patient patient, BindingResult result,
+	public Patient updatePatient(@PathVariable("id") Integer id, @Valid Patient patient, BindingResult result,
 			Model model) {
-		if (result.hasErrors()) {
-			return "patient/update";
-		}
-		patient.setId(id);
-		patientService.save(patient);
-		model.addAttribute("patient", patientService.findAll());
-		return "redirect:/patients/list";
+		return patientService.save(patient);
+//		if (result.hasErrors()) {
+//			return "patient/update";
+//		}
+//		patient.setId(id);
+//		patientService.save(patient);
+//		model.addAttribute("patient", patientService.findAll());
+//		return "redirect:/patients/list";
 	}
 
-	@GetMapping("/patients/delete/{id}")
-	public String deletePatient(@PathVariable("id") Integer id, Model model) {
-		Patient patient = patientService.findById(id);
-		if (patient != null) {
-			patientService.delete(patient);
-		}
-		model.addAttribute("patient", patientService.findAll());
-		return "redirect:/patients/list";
-	}
+//	@GetMapping("/patients/delete/{id}")
+//	public String deletePatient(@PathVariable("id") Integer id, Model model) {
+//		Patient patient = patientService.findById(id);
+//		return patientService.delete(patient);
+
+//		if (patient != null) {
+//			patientService.delete(patient);
+//		}
+//		model.addAttribute("patient", patientService.findAll());
+//		return "redirect:/patients/list";
+//	}
 
 }
