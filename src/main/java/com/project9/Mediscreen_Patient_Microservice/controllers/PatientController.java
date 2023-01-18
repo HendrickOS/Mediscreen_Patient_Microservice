@@ -27,19 +27,9 @@ public class PatientController {
 		return patientService.findAll();
 	}
 
-//	@GetMapping("/patients/add")
-//	public String addPatient(Patient patient) {
-//		return "patient/add";
-//	}
-
 	@PostMapping("/patients/validate")
 	public Patient validate(@Valid Patient patient) {
-//		if (!result.hasErrors()) {
 		return patientService.save(patient);
-//			return "redirect:/patients/list";
-//		}
-//		return "patient/add";
-//		return patient;
 	}
 
 //	@GetMapping("/patients/update/{id}")
