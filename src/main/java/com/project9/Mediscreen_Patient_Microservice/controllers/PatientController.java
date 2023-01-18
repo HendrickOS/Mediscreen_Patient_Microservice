@@ -7,7 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,22 +33,22 @@ public class PatientController {
 //	}
 
 	@PostMapping("/patients/validate")
-	public Patient validate(@Valid Patient patient, BindingResult result) {
-		if (!result.hasErrors()) {
-			return patientService.save(patient);
+	public Patient validate(@Valid Patient patient) {
+//		if (!result.hasErrors()) {
+		return patientService.save(patient);
 //			return "redirect:/patients/list";
-		}
+//		}
 //		return "patient/add";
-		return patient;
+//		return patient;
 	}
 
-	@GetMapping("/patients/update/{id}")
-	public Patient showUpdateForm(@PathVariable("id") Integer id, Model model) {
-		return patientService.findById(id);
+//	@GetMapping("/patients/update/{id}")
+//	public Patient showUpdateForm(@PathVariable("id") Integer id) {
+//		return patientService.findById(id);
 //		Patient patient = patientService.findById(id);
 //		model.addAttribute("patient", patient);
 //		return "patient/update";
-	}
+//	}
 
 	@PostMapping("/patients/update/{id}")
 	public Patient updatePatient(@PathVariable("id") Integer id, @Valid Patient patient, BindingResult result,
@@ -63,16 +63,16 @@ public class PatientController {
 //		return "redirect:/patients/list";
 	}
 
-//	@GetMapping("/patients/delete/{id}")
-//	public String deletePatient(@PathVariable("id") Integer id, Model model) {
-//		Patient patient = patientService.findById(id);
-//		return patientService.delete(patient);
+	@DeleteMapping("/patients/delete/{id}")
+	public void deletePatient(@PathVariable("id") Integer id) {
+		Patient patient = patientService.findById(id);
+		patientService.delete(patient);
 
 //		if (patient != null) {
 //			patientService.delete(patient);
 //		}
 //		model.addAttribute("patient", patientService.findAll());
 //		return "redirect:/patients/list";
-//	}
+	}
 
 }
