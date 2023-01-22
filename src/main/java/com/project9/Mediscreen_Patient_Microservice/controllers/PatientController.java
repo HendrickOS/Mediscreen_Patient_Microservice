@@ -53,7 +53,7 @@ public class PatientController {
 //		return "redirect:/patients/list";
 	}
 
-	@DeleteMapping("/patients/delete/{id}")
+	@DeleteMapping("/patients/delete")
 	public void deletePatient(@PathVariable("id") Integer id) {
 		Patient patient = patientService.findById(id);
 		patientService.delete(patient);
