@@ -24,6 +24,16 @@ public class Patient {
 		super();
 	}
 
+	public Patient(String name, String fullname, Date birthdate, String gender, String address, String phoneNumber) {
+		super();
+		this.name = name;
+		this.fullname = fullname;
+		this.birthdate = birthdate;
+		this.gender = gender;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+	}
+
 	public Integer getId() {
 		return id;
 	}
