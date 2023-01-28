@@ -28,9 +28,9 @@ public class PatientController {
 		return patientService.findAll();
 	}
 
-	@GetMapping("/patients/{fullname}")
-	public Patient patientByFullname(@PathVariable("fullname") String fullname) {
-		return patientService.findByFullname(fullname);
+	@GetMapping("/patients/{lastname}")
+	public Patient patientByFullname(@PathVariable("lastname") String lastname) {
+		return patientService.findByLastname(lastname);
 	}
 
 	@PostMapping("/patients/validate")

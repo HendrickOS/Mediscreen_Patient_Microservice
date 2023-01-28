@@ -35,9 +35,9 @@ public class PatientServiceTest {
 
 	@BeforeEach
 	public void setUp() {
-		patient1 = new Patient("name1", "fullname1", Date.valueOf("1965-01-01"), "M", null, null);
-		patient2 = new Patient("name2", "fullname2", Date.valueOf("1965-01-02"), "F", null, null);
-		patient3 = new Patient("name3", "fullname3", Date.valueOf("1965-01-03"), "M", null, null);
+		patient1 = new Patient("lastname1", "firstname1", Date.valueOf("1965-01-01"), "M", null, null);
+		patient2 = new Patient("lastname2", "firstname2", Date.valueOf("1965-01-02"), "F", null, null);
+		patient3 = new Patient("lastname3", "firstname3", Date.valueOf("1965-01-03"), "M", null, null);
 //	    patientDTO1 = new PatientDTO("lastname1", "firstname1", Date.valueOf("1965-01-01"), Gender.M, null, null);
 //	    patientDTO2 = new PatientDTO("lastname2", "firstname2", Date.valueOf("1965-01-01"), Gender.M, null, null);
 //	    patientDTO3 = new PatientDTO("lastname3", "firstname3", Date.valueOf("1965-01-01"), Gender.M, null, null);
@@ -53,9 +53,9 @@ public class PatientServiceTest {
 		when(patientRepositoryMocked.findAll()).thenReturn(givenPatients);
 		List<Patient> result = patientServiceUnderTest.findAll();
 
-		assertThat(result.get(0).getFullname()).isEqualTo("fullname1");
-		assertThat(result.get(1).getFullname()).isEqualTo("fullname2");
-		assertThat(result.get(2).getFullname()).isEqualTo("fullname3");
+		assertThat(result.get(0).getLastname()).isEqualTo("lastname1");
+		assertThat(result.get(1).getLastname()).isEqualTo("lastname2");
+		assertThat(result.get(2).getLastname()).isEqualTo("lastname3");
 	}
 
 	@Test
@@ -69,11 +69,11 @@ public class PatientServiceTest {
 	}
 
 	@Test
-	public void findByFullnameTest() {
-		String givenFullname = "fullname1";
-		when(patientRepositoryMocked.findByFullname(givenFullname)).thenReturn((patient1));
+	public void findByLastnameTest() {
+		String givenLastname = "lastname1";
+		when(patientRepositoryMocked.findByLastname(givenLastname)).thenReturn((patient1));
 
-		Patient result = patientServiceUnderTest.findByFullname(givenFullname);
+		Patient result = patientServiceUnderTest.findByLastname(givenLastname);
 
 		assertThat(result).isEqualTo(patient1);
 	}

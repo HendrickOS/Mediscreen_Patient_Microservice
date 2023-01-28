@@ -9,10 +9,8 @@ import com.project9.Mediscreen_Patient_Microservice.domain.Patient;
 
 public interface PatientRepository extends JpaRepository<Patient, Integer>, CrudRepository<Patient, Integer> {
 
-	Patient findByFullname(String fullname);
+	Patient findByLastname(String lastname);
 
 	Optional<Patient> findById(Integer id);
-
-//	Patient save(Patient patient);
 
 }

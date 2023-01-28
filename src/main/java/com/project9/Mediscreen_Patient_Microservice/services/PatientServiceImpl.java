@@ -34,8 +34,8 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	@Override
-	public Patient findByFullname(String fullname) {
-		return patientRepository.findByFullname(fullname);
+	public Patient findByLastname(String lastname) {
+		return patientRepository.findByLastname(lastname);
 	}
 
 	@Override
@@ -50,9 +50,9 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	@Override
-	public int ageOfPatient(String fullname) {
+	public int ageOfPatient(String lastname) {
 		int age;
-		Patient patient = findByFullname(fullname);
+		Patient patient = findByLastname(lastname);
 		age = Period.between(patient.getBirthdate().toLocalDate(), LocalDate.now()).getYears();
 		return age;
 	}

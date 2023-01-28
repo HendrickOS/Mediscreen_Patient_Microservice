@@ -13,9 +13,9 @@ public interface PatientService {
 
 	List<Patient> findAll();
 
-	Patient findByFullname(String fullname);
+	Patient findByLastname(String lastname);
 
-	int ageOfPatient(String fullname);
+	int ageOfPatient(String lastname);
 
 	Patient findById(Integer id);
 
