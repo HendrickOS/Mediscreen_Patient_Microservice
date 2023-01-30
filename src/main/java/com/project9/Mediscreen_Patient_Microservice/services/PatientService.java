@@ -21,4 +21,6 @@ public interface PatientService {
 
 	void delete(Patient patient);
 
+	void deleteById(Integer id);
+
 }

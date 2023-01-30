@@ -14,4 +14,6 @@ public interface PatientRepository extends JpaRepository<Patient, Integer>, Crud
 	Optional<Patient> findById(Integer id);
 //	Patient findById(Integer id);
 
+	void deleteById(Integer id);
+
 }

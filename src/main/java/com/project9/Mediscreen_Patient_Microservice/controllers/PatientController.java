@@ -48,16 +48,9 @@ public class PatientController {
 		return patientService.save(patient);
 	}
 
-//	@DeleteMapping("/patients/delete")
-//	public void deletePatient(@PathVariable("id") Integer id) {
-//		Patient patient = patientService.findById(id);
-//		patientService.delete(patient);
-
-//		if (patient != null) {
-//			patientService.delete(patient);
-//		}
-//		model.addAttribute("patient", patientService.findAll());
-//		return "redirect:/patients/list";
-//	}
+	@GetMapping("/patients/delete/{id}")
+	public void deletePatient(@PathVariable("id") Integer id) {
+		patientService.deleteById(id);
+	}
 
 }

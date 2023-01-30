@@ -50,6 +50,12 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	@Override
+	public void deleteById(Integer id) {
+		patientRepository.deleteById(id);
+
+	}
+
+	@Override
 	public int ageOfPatient(String lastname) {
 		int age;
 		Patient patient = findByLastname(lastname);
