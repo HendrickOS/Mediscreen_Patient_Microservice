@@ -46,13 +46,11 @@ public class PatientServiceImpl implements PatientService {
 	@Override
 	public void delete(Patient patient) {
 		patientRepository.delete(patient);
-
 	}
 
 	@Override
 	public void deleteById(Integer id) {
 		patientRepository.deleteById(id);
-
 	}
 
 	@Override
